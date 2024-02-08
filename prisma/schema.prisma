@@ -15,16 +15,15 @@ model Poll {
 
   options PollOption[]
   votes   Vote[]
-
-  @@map("polls")
 }
 
 model PollOption {
   id     String @id @default(uuid())
   title  String
   pollId String
-  poll   Poll   @relation(fields: [pollId], references: [id])
-  votes  Vote[]
+
+  poll  Poll   @relation(fields: [pollId], references: [id])
+  votes Vote[]
 }
 
 model Vote {
